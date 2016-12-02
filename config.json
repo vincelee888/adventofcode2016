@@ -1,0 +1,7 @@
+{
+  "paths": {
+    "js": "src/",
+    "spec": "spec/"
+  }
+}
+
