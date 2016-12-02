@@ -1,8 +1,10 @@
 function TestModel () {
   var self = this
 
-  self.getGreeting = () => {
-    return 'hello world'
+  self.getDistanceAway = () => {
+    let result = 0
+
+    return result
   }
 }
 
