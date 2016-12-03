@@ -7,7 +7,7 @@ const orientations = {
 
 const parseCommand = (command) => {
   return {
-    turnDirection: command.substring(0, 1),
+    direction: command.substring(0, 1),
     distance: parseInt(command.substring(1, command.length))
   }
 }
