@@ -35,4 +35,10 @@ describe('BunnyHQ map', () => {
       })
     })
   })
+
+  describe('- move with supplied test case', () => {
+    it('should expected', () => {
+      expect(getDistanceAway('R5, L5, R5, R3')).toEqual(12)
+    })
+  })
 })
