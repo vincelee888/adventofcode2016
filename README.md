@@ -1,6 +1,8 @@
-# jskatabase
-base project for js katas
+# JS solutions for Advent of Code, 2016
+my solutions to this year's [Advent of Code](http://adventofcode.com/2016)
 
-use node lts
-
-stolen from @frontendphil's foley setup
+usage:
+```
+npm i
+gulp
+```
