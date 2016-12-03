@@ -15,8 +15,8 @@ const parseCommand = (command) => {
 function Santa () {
   const self = this
   self.orientation = orientations.north
-  self.stepsNorth = 0
-  self.stepsEast = 0
+  self.blocksNorth = 0
+  self.blocksEast = 0
 
   self.getNewOrientation = (direction) => {
     const modifier = direction === 'R' ? 1 : -1
@@ -33,10 +33,10 @@ function Santa () {
   self.move = (m) => {
     const { direction, distance } = parseCommand(m)
     self.turn(direction)
-    if (self.orientation === orientations.north) { self.stepsNorth += distance }
-    if (self.orientation === orientations.east) { self.stepsEast += distance }
-    if (self.orientation === orientations.south) { self.stepsNorth -= distance }
-    if (self.orientation === orientations.west) { self.stepsEast -= distance }
+    if (self.orientation === orientations.north) { self.blocksNorth += distance }
+    if (self.orientation === orientations.east) { self.blocksEast += distance }
+    if (self.orientation === orientations.south) { self.blocksNorth -= distance }
+    if (self.orientation === orientations.west) { self.blocksEast -= distance }
   }
 }
 
@@ -50,7 +50,7 @@ const getDistanceAway = (moves) => {
     santa.move(m)
   })
 
-  return Math.abs(santa.stepsNorth) + Math.abs(santa.stepsEast)
+  return Math.abs(santa.blocksNorth) + Math.abs(santa.blocksEast)
 }
 
 module.exports = getDistanceAway
