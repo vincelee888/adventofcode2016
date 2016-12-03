@@ -10,6 +10,8 @@ class Keypad {
 
 module.exports = (keypadLayout, startPosition, moves) => {
   const keypad = new Keypad(keypadLayout)
-  const currValue = keypad.getValue(startPosition)
-  return currValue.toString()
+  return moves
+    .split('\n')
+    .map((m) => keypad.getValue(startPosition))
+    .join('')
 }

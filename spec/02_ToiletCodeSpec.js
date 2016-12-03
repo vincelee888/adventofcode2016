@@ -18,4 +18,11 @@ describe('Get Toilet Code', () => {
     const moves = ''
     expect(getToiletCode(keypad, startPosition, moves)).toEqual('5')
   })
+
+  it('- Should return a digit for each line', () => {
+    const moves = `UUUU
+    LLLL`
+    const result = getToiletCode(keypad, startPosition, moves)
+    expect(result.length).toEqual(2)
+  })
 })
