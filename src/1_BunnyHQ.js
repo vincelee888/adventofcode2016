@@ -1,9 +1,8 @@
-const orientations = {
-  north: 0,
-  east: 1,
-  south: 2,
-  west: 3
-}
+const orientationArray = ['north', 'east', 'south', 'west']
+const orientations = {}
+orientationArray.forEach((o, i) => {
+  orientations[o] = i
+})
 
 const parseCommand = (command) => {
   return {
