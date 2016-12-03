@@ -43,7 +43,10 @@ function Santa () {
 const getDistanceAway = (moves) => {
   const santa = new Santa()
 
-  moves.forEach((m) => {
+  moves
+  .split(', ')
+  .filter((m) => m.length > 0)
+  .forEach((m) => {
     santa.move(m)
   })
 
