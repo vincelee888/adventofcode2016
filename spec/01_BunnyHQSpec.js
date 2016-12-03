@@ -25,12 +25,12 @@ describe('BunnyHQ map', () => {
 
   describe('Three moves', () => {
     describe('- clockwise in a square', () => {
-      it('should return initial distance', () => {
+      it('should return square\'s length', () => {
         expect(getBlocksAway('R2, R2, R2')).toEqual(2)
       })
     })
     describe('- anti-clockwise in a square', () => {
-      it('should return initial distance', () => {
+      it('should return square\'s length', () => {
         expect(getBlocksAway('L2, L2, L2')).toEqual(2)
       })
     })
