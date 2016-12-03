@@ -1,7 +1,7 @@
 /*
   global describe,  it, expect
 */
-import getBlocksAway from '../src/1_BunnyHQ/getBlocksAway'
+import getBlocksAway from '../src/01_BunnyHQ/getBlocksAway'
 
 describe('BunnyHQ map', () => {
   describe('No movement', () => {
