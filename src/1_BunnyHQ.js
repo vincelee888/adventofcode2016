@@ -8,6 +8,8 @@ const orientations = {
 function Santa () {
   const self = this
   self.orientation = orientations.north
+  self.stepsNorth = 0
+  self.stepsEast = 0
 
   self.getNewOrientation = (direction) => {
     const modifier = direction === 'R' ? 1 : -1
@@ -20,6 +22,16 @@ function Santa () {
   self.turn = (direction) => {
     self.orientation = self.getNewOrientation(direction)
   }
+
+  self.move = (m) => {
+    const direction = m.substring(0, 1)
+    self.turn(direction)
+    const distance = parseInt(m.substring(1, m.length))
+    if (self.orientation === orientations.north) { self.stepsNorth += distance }
+    if (self.orientation === orientations.east) { self.stepsEast += distance }
+    if (self.orientation === orientations.south) { self.stepsNorth -= distance }
+    if (self.orientation === orientations.west) { self.stepsEast -= distance }
+  }
 }
 
 function TestModel () {
@@ -27,21 +39,12 @@ function TestModel () {
   const santa = new Santa()
 
   self.getDistanceAway = (moves) => {
-    let stepsNorth = 0
-    let stepsEast = 0
-
     moves.forEach((m) => {
-      const direction = m.substring(0, 1)
-      santa.turn(direction)
-      const distance = parseInt(m.substring(1, m.length))
-      if (santa.orientation === orientations.north) { stepsNorth += distance }
-      if (santa.orientation === orientations.east) { stepsEast += distance }
-      if (santa.orientation === orientations.south) { stepsNorth -= distance }
-      if (santa.orientation === orientations.west) { stepsEast -= distance }
+      santa.move(m)
     })
 
-    return Math.abs(stepsNorth) + Math.abs(stepsEast)
+    return Math.abs(santa.stepsNorth) + Math.abs(santa.stepsEast)
   }
 }
 
-module.exports = new TestModel()
+module.exports = TestModel

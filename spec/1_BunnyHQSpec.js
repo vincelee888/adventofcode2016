@@ -1,12 +1,13 @@
 /*
   global describe, beforeEach, it, expect
 */
+const Sut = require('../src/1_BunnyHQ')
 
 describe('BunnyHQ map', () => {
   let sut = null
 
   beforeEach(() => {
-    sut = require('../src/1_BunnyHQ')
+    sut = new Sut()
   })
 
   describe('No movement', () => {
