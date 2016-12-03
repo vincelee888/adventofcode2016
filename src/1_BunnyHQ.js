@@ -40,17 +40,14 @@ function Santa () {
   }
 }
 
-function TestModel () {
-  const self = this
+const getDistanceAway = (moves) => {
   const santa = new Santa()
 
-  self.getDistanceAway = (moves) => {
-    moves.forEach((m) => {
-      santa.move(m)
-    })
+  moves.forEach((m) => {
+    santa.move(m)
+  })
 
-    return Math.abs(santa.stepsNorth) + Math.abs(santa.stepsEast)
-  }
+  return Math.abs(santa.stepsNorth) + Math.abs(santa.stepsEast)
 }
 
-module.exports = TestModel
+module.exports = getDistanceAway
