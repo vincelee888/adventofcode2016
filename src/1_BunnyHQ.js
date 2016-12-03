@@ -5,6 +5,13 @@ const orientations = {
   west: 3
 }
 
+const parseCommand = (command) => {
+  return {
+    turnDirection: command.substring(0, 1),
+    distance: parseInt(command.substring(1, command.length))
+  }
+}
+
 function Santa () {
   const self = this
   self.orientation = orientations.north
@@ -24,9 +31,8 @@ function Santa () {
   }
 
   self.move = (m) => {
-    const direction = m.substring(0, 1)
+    const { direction, distance } = parseCommand(m)
     self.turn(direction)
-    const distance = parseInt(m.substring(1, m.length))
     if (self.orientation === orientations.north) { self.stepsNorth += distance }
     if (self.orientation === orientations.east) { self.stepsEast += distance }
     if (self.orientation === orientations.south) { self.stepsNorth -= distance }
