@@ -2,7 +2,6 @@
   global describe, beforeEach, it, expect
 */
 
-
 describe('BunnyHQ map', () => {
   let sut = null
 
@@ -41,5 +40,4 @@ describe('BunnyHQ map', () => {
       })
     })
   })
-
 })
