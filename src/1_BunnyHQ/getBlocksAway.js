@@ -30,8 +30,7 @@ class Santa {
     this.orientation = this.getNewOrientation(direction)
   }
 
-  move (m) {
-    const { direction, distance } = parseCommand(m)
+  move ({ direction, distance }) {
     this.turn(direction)
     if (this.orientation === orientations.north) { this.blocksNorth += distance }
     if (this.orientation === orientations.east) { this.blocksEast += distance }
@@ -40,17 +39,15 @@ class Santa {
   }
 }
 
-const getBlocksAway = (moves) => {
+module.exports = (moves) => {
   const santa = new Santa()
 
   moves
-  .split(', ')
-  .filter((m) => m.length > 0)
-  .forEach((m) => {
-    santa.move(m)
-  })
+    .split(', ')
+    .filter((m) => m.length > 0)
+    .forEach((m) => {
+      santa.move(parseCommand(m))
+    })
 
   return Math.abs(santa.blocksNorth) + Math.abs(santa.blocksEast)
 }
-
-module.exports = getBlocksAway
