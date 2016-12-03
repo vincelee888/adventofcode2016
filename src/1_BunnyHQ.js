@@ -11,31 +11,32 @@ const parseCommand = (command) => {
   }
 }
 
-function Santa () {
-  const self = this
-  self.orientation = orientations.north
-  self.blocksNorth = 0
-  self.blocksEast = 0
+class Santa {
+  constructor () {
+    this.orientation = orientations.north
+    this.blocksNorth = 0
+    this.blocksEast = 0
+  }
 
-  self.getNewOrientation = (direction) => {
+  getNewOrientation (direction) {
     const modifier = direction === 'R' ? 1 : -1
-    self.orientation += modifier
-    if (self.orientation > orientations.west) return orientations.north
-    if (self.orientation < orientations.north) return orientations.west
-    return self.orientation
+    this.orientation += modifier
+    if (this.orientation > orientations.west) return orientations.north
+    if (this.orientation < orientations.north) return orientations.west
+    return this.orientation
   }
 
-  self.turn = (direction) => {
-    self.orientation = self.getNewOrientation(direction)
+  turn (direction) {
+    this.orientation = this.getNewOrientation(direction)
   }
 
-  self.move = (m) => {
+  move (m) {
     const { direction, distance } = parseCommand(m)
-    self.turn(direction)
-    if (self.orientation === orientations.north) { self.blocksNorth += distance }
-    if (self.orientation === orientations.east) { self.blocksEast += distance }
-    if (self.orientation === orientations.south) { self.blocksNorth -= distance }
-    if (self.orientation === orientations.west) { self.blocksEast -= distance }
+    this.turn(direction)
+    if (this.orientation === orientations.north) { this.blocksNorth += distance }
+    if (this.orientation === orientations.east) { this.blocksEast += distance }
+    if (this.orientation === orientations.south) { this.blocksNorth -= distance }
+    if (this.orientation === orientations.west) { this.blocksEast -= distance }
   }
 }
 
