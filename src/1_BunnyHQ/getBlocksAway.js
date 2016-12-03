@@ -40,7 +40,7 @@ class Santa {
   }
 }
 
-const getDistanceAway = (moves) => {
+const getBlocksAway = (moves) => {
   const santa = new Santa()
 
   moves
@@ -53,4 +53,4 @@ const getDistanceAway = (moves) => {
   return Math.abs(santa.blocksNorth) + Math.abs(santa.blocksEast)
 }
 
-module.exports = getDistanceAway
+module.exports = getBlocksAway
