@@ -11,4 +11,8 @@ describe('Get Total Valid Triangles', () => {
   it('- true if sum of two smallest values is greater than the other number', () => {
     expect(sut('1 2 2')).toEqual(1)
   })
+
+  it('- can have multiple whitespace', () => {
+    expect(sut('1     2  2')).toEqual(1)
+  })
 })
