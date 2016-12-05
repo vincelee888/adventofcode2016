@@ -20,9 +20,17 @@ describe('Get Toilet Code', () => {
   })
 
   it('- Should return a digit for each line', () => {
-    const moves = `UUUU
-    LLLL`
+    const moves = `U
+    L`
     const result = getToiletCode(keypad, startPosition, moves)
     expect(result.length).toEqual(2)
+  })
+
+  describe('- U from start', () => {
+    it('- Should return 2', () => {
+      const moves = 'U'
+      const result = getToiletCode(keypad, startPosition, moves)
+      expect(result).toEqual('2')
+    })
   })
 })

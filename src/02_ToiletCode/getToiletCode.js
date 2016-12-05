@@ -8,10 +8,32 @@ class Keypad {
   }
 }
 
+class Plotter {
+  constructor (layout) {
+    this.layout = layout
+  }
+
+  getDigit ({ buttonsAcross, buttonsDown }, moves) {
+    moves.split('').forEach((m) => {
+      if (m === 'U') { buttonsDown-- }
+    })
+    return { buttonsAcross, buttonsDown }
+  }
+}
+
 module.exports = (keypadLayout, startPosition, moves) => {
   const keypad = new Keypad(keypadLayout)
-  return moves
+  const plotter = new Plotter(keypadLayout)
+  const results = []
+  let nextPosition = startPosition
+  moves
     .split('\n')
-    .map((m) => keypad.getValue(startPosition))
-    .join('')
+    .forEach((m) => {
+      const endPosition = plotter.getDigit(nextPosition, m)
+      const result = keypad.getValue(endPosition)
+      nextPosition = endPosition
+      results.push(result)
+    })
+
+  return results.join('')
 }
