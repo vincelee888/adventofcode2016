@@ -48,4 +48,27 @@ describe('Get Toilet Code', () => {
       expect(result).toEqual('4')
     })
   })
+
+  describe('- If move moves off keypad, stay on current button', () => {
+    it('- UU stays on 2', () => {
+      const moves = 'UU'
+      const result = getToiletCode(keypad, startPosition, moves)
+      expect(result).toEqual('2')
+    })
+    it('- RR stays on 6', () => {
+      const moves = 'RR'
+      const result = getToiletCode(keypad, startPosition, moves)
+      expect(result).toEqual('6')
+    })
+    it('- DD stays on 8', () => {
+      const moves = 'DD'
+      const result = getToiletCode(keypad, startPosition, moves)
+      expect(result).toEqual('8')
+    })
+    it('- LL stays on 4', () => {
+      const moves = 'LL'
+      const result = getToiletCode(keypad, startPosition, moves)
+      expect(result).toEqual('4')
+    })
+  })
 })
