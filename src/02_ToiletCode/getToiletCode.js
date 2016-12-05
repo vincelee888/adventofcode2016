@@ -19,6 +19,7 @@ class Plotter {
       .forEach((m) => {
         if (m === 'U') { buttonsDown-- }
         if (m === 'R') { buttonsAcross++ }
+        if (m === 'D') { buttonsDown++ }
       })
     return { buttonsAcross, buttonsDown }
   }
