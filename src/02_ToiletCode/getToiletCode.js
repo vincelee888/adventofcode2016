@@ -14,9 +14,12 @@ class Plotter {
   }
 
   getDigit ({ buttonsAcross, buttonsDown }, moves) {
-    moves.split('').forEach((m) => {
-      if (m === 'U') { buttonsDown-- }
-    })
+    moves
+      .split('')
+      .forEach((m) => {
+        if (m === 'U') { buttonsDown-- }
+        if (m === 'R') { buttonsAcross++ }
+      })
     return { buttonsAcross, buttonsDown }
   }
 }

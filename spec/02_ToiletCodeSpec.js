@@ -26,11 +26,16 @@ describe('Get Toilet Code', () => {
     expect(result.length).toEqual(2)
   })
 
-  describe('- U from start', () => {
-    it('- Should return 2', () => {
+  describe('- Letter corresponds to a direction', () => {
+    it('- U moves up to 2', () => {
       const moves = 'U'
       const result = getToiletCode(keypad, startPosition, moves)
       expect(result).toEqual('2')
+    })
+    it('- R moves right to 6', () => {
+      const moves = 'R'
+      const result = getToiletCode(keypad, startPosition, moves)
+      expect(result).toEqual('6')
     })
   })
 })
