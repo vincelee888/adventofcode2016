@@ -20,6 +20,7 @@ class Plotter {
         if (m === 'U') { buttonsDown-- }
         if (m === 'R') { buttonsAcross++ }
         if (m === 'D') { buttonsDown++ }
+        if (m === 'L') { buttonsAcross-- }
       })
     return { buttonsAcross, buttonsDown }
   }

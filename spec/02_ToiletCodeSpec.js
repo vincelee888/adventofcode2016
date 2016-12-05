@@ -42,5 +42,10 @@ describe('Get Toilet Code', () => {
       const result = getToiletCode(keypad, startPosition, moves)
       expect(result).toEqual('8')
     })
+    it('- L moves down to 4', () => {
+      const moves = 'L'
+      const result = getToiletCode(keypad, startPosition, moves)
+      expect(result).toEqual('4')
+    })
   })
 })
