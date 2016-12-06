@@ -46,6 +46,6 @@ describe('Get sum of valid site ids', () => {
   })
 
   it('- can solve part 1', () => {
-    expect(sumValidSectorIds(part1)).toEqual(114229)
+    expect(sumValidSectorIds(part1)).toEqual(158835)
   })
 })

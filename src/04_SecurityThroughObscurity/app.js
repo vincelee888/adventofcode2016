@@ -16,11 +16,15 @@ const isValid = ({ letters, checksum }) => {
   const sortByCountThenAlpha = (a, b) => {
     if (b.count < a.count) return -1
     if (b.count > a.count) return 1
-    return b.char < a.char
+    if (b.char > a.char) return -1
+    if (b.char < a.char) return 1
+    return 0
   }
 
   const sorted = getCounts(letters)
     .sort(sortByCountThenAlpha)
+
+  console.log(sorted)
 
   return checksum.split('')
     .map((el, i) => el !== sorted[i].char)
