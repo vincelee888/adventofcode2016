@@ -24,8 +24,6 @@ const isValid = ({ letters, checksum }) => {
   const sorted = getCounts(letters)
     .sort(sortByCountThenAlpha)
 
-  console.log(sorted)
-
   return checksum.split('')
     .map((el, i) => el !== sorted[i].char)
     .filter((v) => v).length === 0
@@ -45,7 +43,7 @@ const sumValidSectorIds = (input) => {
   return input
     .split('\n')
     .map((l) => parse(l.trim()))
-    .filter((e) => isValid(e))
+    .filter(isValid)
     .reduce((a, b) => {
       return a + b.sectorId
     }, 0)
