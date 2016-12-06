@@ -20,8 +20,12 @@ describe('Get Total Valid Triangles', () => {
     expect(sut('1     2  2')).toEqual(1)
   })
 
+  it('- side lengths can be in any order', () => {
+    expect(sut('25 10 5')).toEqual(0)
+  })
+
   it('- can process many lines', () => {
-    const input = `3 6 2
+    const input = `3 2 2
     3 5 6`
     expect(sut(input)).toEqual(2)
   })

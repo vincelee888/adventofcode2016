@@ -7,6 +7,9 @@ const parseLine = (line) => {
     .trim()
     .split(/\s+/)
     .map((x) => parseInt(x))
+    .sort((a, b) => {
+      return a - b
+    })
 }
 
 const parse = (values) => {
