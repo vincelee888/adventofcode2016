@@ -33,8 +33,6 @@ const vertical = (values) => {
     .split('\n')
     .map((l) => l.trim().split(/\s+/))
 
-  console.log(array)
-
   const converted = []
 
   for (let row = 0; row < array.length; row += 3) {
@@ -42,8 +40,6 @@ const vertical = (values) => {
       converted.push([array[row][col], array[row + 1][col], array[row + 2][col]])
     }
   }
-
-  console.log(converted)
 
   const asString = converted
     .map((row) => row.join(' '))

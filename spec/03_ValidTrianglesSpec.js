@@ -4029,6 +4029,6 @@ describe('Vertical representation', () => {
   883  323  560
   942  136  297
   103  324  576`
-    expect(vertical(input)).toEqual(1589)
+    expect(vertical(input)).toEqual(1921)
   })
 })
