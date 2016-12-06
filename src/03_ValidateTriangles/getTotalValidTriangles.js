@@ -23,7 +23,33 @@ const parse = (values) => {
     }, 0)
 }
 
-module.exports = (values) => {
+const horizontal = (values) => {
   if (values === undefined) return 0
   return parse(values)
 }
+
+const vertical = (values) => {
+  const array = values
+    .split('\n')
+    .map((l) => l.trim().split(/\s+/))
+
+  console.log(array)
+
+  const converted = []
+
+  for (let row = 0; row < array.length; row += 3) {
+    for (let col = 0; col < 3; col++) {
+      converted.push([array[row][col], array[row + 1][col], array[row + 2][col]])
+    }
+  }
+
+  console.log(converted)
+
+  const asString = converted
+    .map((row) => row.join(' '))
+    .join('\n')
+
+  return parse(asString)
+}
+
+module.exports = { horizontal, vertical }
