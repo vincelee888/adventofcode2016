@@ -12,12 +12,12 @@ const parseLine = (line) => {
 const parse = (values) => {
   return values
     .split('\n')
-      .reduce((acc, cur) => {
-        const [a, b, c] = parseLine(cur)
-        return isValidTriangle([a, b, c])
-          ? acc + 1
-          : acc
-      }, 0)
+    .reduce((acc, cur) => {
+      const [a, b, c] = parseLine(cur)
+      return isValidTriangle([a, b, c])
+        ? acc + 1
+        : acc
+    }, 0)
 }
 
 module.exports = (values) => {
