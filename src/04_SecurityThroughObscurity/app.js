@@ -5,17 +5,17 @@ const isValid = ({ letters, checksum }) => {
       .forEach((l) => {
         const match = counts.filter((c) => c.char === l)
         if (match.length === 1) {
-          match[0].priority++
+          match[0].count++
         } else {
-          counts.push({ char: l, priority: 1 })
+          counts.push({ char: l, count: 1 })
         }
       })
     return counts
   }
 
   const sortByCountThenAlpha = (a, b) => {
-    if (b.priority < a.priority) return -1
-    if (b.priority > a.priority) return 1
+    if (b.count < a.count) return -1
+    if (b.count > a.count) return 1
     return b.char < a.char
   }
 
