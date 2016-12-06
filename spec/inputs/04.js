@@ -1,4 +1,4 @@
-const part1 = `nzydfxpc-rclop-qwzhpc-qtylyntyr-769[oshgk]
+const input = `nzydfxpc-rclop-qwzhpc-qtylyntyr-769[oshgk]
 qzlozfhmf-bzmcx-bnzshmf-zbpthrhshnm-339[zmxdi]
 xtwtelcj-rclop-upwwjmply-zapcletzyd-743[itbds]
 mrxivrexmsrep-fewoix-ywiv-xiwxmrk-308[kzypw]
@@ -1065,4 +1065,4 @@ mrxivrexmsrep-gerhc-pefsvexsvc-828[ubzia]
 fydelmwp-mfyyj-hzcvdsza-769[anbml]
 rwcnawjcrxwju-ljwmh-bqryyrwp-277[nxatm]`
 
-module.exports = { part1 }
+module.exports = { input }

@@ -1,8 +1,8 @@
 /*
   global describe,  it, expect
 */
-import { sumValidSectorIds, shift } from '../src/04_SecurityThroughObscurity/app'
-import { part1 } from './inputs/04'
+import { sumValidSectorIds, shift, decrypt } from '../src/04_SecurityThroughObscurity/app'
+import { input } from './inputs/04'
 
 describe('Get sum of valid site ids', () => {
   it('- Should return an integer', () => {
@@ -48,7 +48,7 @@ describe('Get sum of valid site ids', () => {
   // todo: correct alpha sort test
 
   it('- can solve part 1', () => {
-    expect(sumValidSectorIds(part1)).toEqual(158835)
+    expect(sumValidSectorIds(input)).toEqual(158835)
   })
 })
 
@@ -61,5 +61,34 @@ describe('Shift', () => {
   })
   it('- can handle many loops', () => {
     expect(shift('z', 27)).toEqual('a')
+  })
+})
+
+describe('Decrypt', () => {
+  it('- should only decrypt valid rooms', () => {
+    const input = `not-a-real-room-404[oarel]
+    totally-real-room-200[decoy]`
+    expect(decrypt(input).length).toEqual(1)
+  })
+
+  it('- should shift the letters by the sector id value', () => {
+    const input = 'aa-1[a]'
+    expect(decrypt(input)[0].name).toEqual('bb')
+  })
+
+  it('- should handle multiple lines', () => {
+    const input = `not-a-real-room-404[oarel]
+    a-b-c-d-e-f-g-h-987[abcde]
+    aaaaa-bbb-z-y-x-123[abxyz]
+    totally-real-room-200[decoy]`
+    expect(decrypt(input)[0].name).toEqual('bchofsozfcca')
+    expect(decrypt(input)[1].name).toEqual('zabcdefg')
+    expect(decrypt(input)[2].name).toEqual('tttttuuusrq')
+  })
+
+  it('- can solve part 2', () => {
+    const rooms = decrypt(input)
+    let target = rooms.filter((room) => room.name.includes('pole'))
+    console.log(target[0].sectorId)
   })
 })

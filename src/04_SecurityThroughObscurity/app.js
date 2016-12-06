@@ -52,10 +52,30 @@ const sumValidSectorIds = (input) => {
 const shift = (char, charsToShift) => {
   const alphabet = 'abcdefghijklmnopqrstuvwxyz'
   const currIndex = alphabet.indexOf(char)
-  charsToShift = charsToShift % alphabet.length
-  return currIndex + charsToShift > alphabet.length - 1
-    ? alphabet.charAt(currIndex + charsToShift - alphabet.length)
-    : alphabet.charAt(currIndex + charsToShift)
+  const totalChars = alphabet.length
+  charsToShift = charsToShift % totalChars
+  const desiredIndex = currIndex + charsToShift
+  return desiredIndex > totalChars - 1
+    ? alphabet.charAt(desiredIndex - totalChars)
+    : alphabet.charAt(desiredIndex)
 }
 
-module.exports = { sumValidSectorIds, shift }
+const shiftChars = (chars, charsToShift) => {
+  return chars
+    .map((c) => shift(c, charsToShift))
+    .join('')
+}
+
+const decrypt = (input) => {
+  if (input === undefined) return 0
+  return input
+    .split('\n')
+    .map((l) => parse(l.trim()))
+    .filter(isValid)
+    .map((l) => ({
+      name: shiftChars(l.letters, l.sectorId),
+      sectorId: l.sectorId
+    }))
+}
+
+module.exports = { sumValidSectorIds, shift, decrypt }
