@@ -16,6 +16,8 @@ class Santa {
     this.orientation = orientations.north
     this.blocksNorth = 0
     this.blocksEast = 0
+    this.blocksVisited = [{ n: this.blocksNorth, e: this.blocksEast }]
+    this.firstDoubleVisited = null
   }
 
   getNewOrientation (direction) {
@@ -30,16 +32,56 @@ class Santa {
     this.orientation = this.getNewOrientation(direction)
   }
 
+  updateVisited () {
+    const currLocation = { n: this.blocksNorth, e: this.blocksEast }
+    this.blocksVisited.push({ n: currLocation.n, e: currLocation.e })
+    const dupes = this.blocksVisited
+      .filter((v) => {
+        return v.n === currLocation.n && v.e === currLocation.e
+      })
+    if (dupes.length === 2 && this.firstDoubleVisited === null) {
+      this.firstDoubleVisited = currLocation
+    }
+  }
+
+  moveNorth (distance) {
+    for (let i = 0; i < distance; i++) {
+      this.blocksNorth++
+      this.updateVisited()
+    }
+  }
+
+  moveEast (distance) {
+    for (let i = 0; i < distance; i++) {
+      this.blocksEast++
+      this.updateVisited()
+    }
+  }
+
+  moveSouth (distance) {
+    for (let i = 0; i < distance; i++) {
+      this.blocksNorth--
+      this.updateVisited()
+    }
+  }
+
+  moveWest (distance) {
+    for (let i = 0; i < distance; i++) {
+      this.blocksEast--
+      this.updateVisited()
+    }
+  }
+
   move ({ direction, distance }) {
     this.turn(direction)
-    if (this.orientation === orientations.north) { this.blocksNorth += distance }
-    if (this.orientation === orientations.east) { this.blocksEast += distance }
-    if (this.orientation === orientations.south) { this.blocksNorth -= distance }
-    if (this.orientation === orientations.west) { this.blocksEast -= distance }
+    if (this.orientation === orientations.north) { this.moveNorth(distance) }
+    if (this.orientation === orientations.east) { this.moveEast(distance) }
+    if (this.orientation === orientations.south) { this.moveSouth(distance) }
+    if (this.orientation === orientations.west) { this.moveWest(distance) }
   }
 }
 
-module.exports = (moves) => {
+const getBlocksAway = (moves) => {
   const santa = new Santa()
 
   moves
@@ -51,3 +93,19 @@ module.exports = (moves) => {
 
   return Math.abs(santa.blocksNorth) + Math.abs(santa.blocksEast)
 }
+
+const getFirstDoubleVisited = (moves) => {
+  const santa = new Santa()
+
+  moves
+    .split(', ')
+    .filter((m) => m.length > 0)
+    .forEach((m) => {
+      santa.move(parseCommand(m))
+    })
+
+  const { n, e } = santa.firstDoubleVisited
+  return Math.abs(n) + Math.abs(e)
+}
+
+module.exports = { getBlocksAway, getFirstDoubleVisited }
