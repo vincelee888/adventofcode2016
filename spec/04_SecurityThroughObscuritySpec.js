@@ -45,6 +45,8 @@ describe('Get sum of valid site ids', () => {
     expect(sumValidSectorIds(input)).toEqual(1514)
   })
 
+  // todo: correct alpha sort test
+
   it('- can solve part 1', () => {
     expect(sumValidSectorIds(part1)).toEqual(158835)
   })
