@@ -1,7 +1,7 @@
 /*
   global describe,  it, expect
 */
-import { sumValidSectorIds } from '../src/04_SecurityThroughObscurity/app'
+import { sumValidSectorIds, shift } from '../src/04_SecurityThroughObscurity/app'
 import { part1 } from './inputs/04'
 
 describe('Get sum of valid site ids', () => {
@@ -49,5 +49,17 @@ describe('Get sum of valid site ids', () => {
 
   it('- can solve part 1', () => {
     expect(sumValidSectorIds(part1)).toEqual(158835)
+  })
+})
+
+describe('Shift', () => {
+  it('- should shift char requested number of times', () => {
+    expect(shift('a', 1)).toEqual('b')
+  })
+  it('- should loop back to start', () => {
+    expect(shift('z', 1)).toEqual('a')
+  })
+  it('- can handle many loops', () => {
+    expect(shift('z', 27)).toEqual('a')
   })
 })

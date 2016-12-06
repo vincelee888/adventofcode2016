@@ -49,4 +49,13 @@ const sumValidSectorIds = (input) => {
     }, 0)
 }
 
-module.exports = { sumValidSectorIds }
+const shift = (char, charsToShift) => {
+  const alphabet = 'abcdefghijklmnopqrstuvwxyz'
+  const currIndex = alphabet.indexOf(char)
+  charsToShift = charsToShift % alphabet.length
+  return currIndex + charsToShift > alphabet.length - 1
+    ? alphabet.charAt(currIndex + charsToShift - alphabet.length)
+    : alphabet.charAt(currIndex + charsToShift)
+}
+
+module.exports = { sumValidSectorIds, shift }
