@@ -17,6 +17,8 @@ class Plotter {
     moves
       .split('')
       .forEach((m) => {
+        const currentLocation = { buttonsAcross, buttonsDown }
+
         if (m === 'U') { buttonsDown-- }
         if (m === 'R') { buttonsAcross++ }
         if (m === 'D') { buttonsDown++ }
@@ -26,6 +28,11 @@ class Plotter {
         if (buttonsAcross > this.layout[0].length) buttonsAcross = this.layout[0].length
         if (buttonsDown > this.layout.length) buttonsDown = this.layout.length
         if (buttonsAcross <= 0) buttonsAcross = 1
+
+        if (this.layout[buttonsDown - 1][buttonsAcross - 1] === 'x') {
+          buttonsAcross = currentLocation.buttonsAcross
+          buttonsDown = currentLocation.buttonsDown
+        }
       })
     return { buttonsAcross, buttonsDown }
   }
