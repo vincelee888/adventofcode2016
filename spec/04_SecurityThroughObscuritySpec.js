@@ -37,11 +37,15 @@ describe('Get sum of valid site ids', () => {
     expect(sumValidSectorIds('c-b-aa-d-e-fff-123[fabcd]')).toEqual(123)
   })
 
-  it('- can handle multiple sites', () => {
+  it('- can handle multiple rooms', () => {
     const input = `not-a-real-room-404[oarel]
     a-b-c-d-e-f-g-h-987[abcde]
     aaaaa-bbb-z-y-x-123[abxyz]
     totally-real-room-200[decoy]`
     expect(sumValidSectorIds(input)).toEqual(1514)
+  })
+
+  it('- can solve part 1', () => {
+    expect(sumValidSectorIds(part1)).toEqual(114229)
   })
 })

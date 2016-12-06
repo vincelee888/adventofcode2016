@@ -1,25 +1,24 @@
-const getCounts = (letters) => {
-  const counts = []
-  letters
-    .forEach((l) => {
-      const match = counts.filter((c) => c.char === l)
-      if (match.length === 1) {
-        match[0].priority++
-      } else {
-        counts.push({ char: l, priority: 1 })
-      }
-    })
-  return counts
-}
-
-const sortByCountThenAlpha = (a, b) => {
-  if (b.priority < a.priority) return -1
-  if (b.priority > a.priority) return 1
-
-  return b.char < a.char
-}
-
 const isValid = ({ letters, checksum }) => {
+  const getCounts = (letters) => {
+    const counts = []
+    letters
+      .forEach((l) => {
+        const match = counts.filter((c) => c.char === l)
+        if (match.length === 1) {
+          match[0].priority++
+        } else {
+          counts.push({ char: l, priority: 1 })
+        }
+      })
+    return counts
+  }
+
+  const sortByCountThenAlpha = (a, b) => {
+    if (b.priority < a.priority) return -1
+    if (b.priority > a.priority) return 1
+    return b.char < a.char
+  }
+
   const sorted = getCounts(letters)
     .sort(sortByCountThenAlpha)
 
