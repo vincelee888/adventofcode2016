@@ -1,5 +1,16 @@
 const isValid = ({parts, checksum}) => {
-  return parts[0].charAt(0) === checksum
+  const sorted = parts
+    .map((p) => ({ char: p.charAt(0), priority: p.length }))
+    .sort((a, b) => {
+      if (b.priority < a.priority) return -1
+      if (b.priority > a.priority) return 1
+
+      return b.char < a.char
+    })
+
+  return checksum.split('')
+    .map((el, i) => el !== sorted[i].char)
+    .filter((v) => v).length === 0
 }
 
 const parse = (input) => {

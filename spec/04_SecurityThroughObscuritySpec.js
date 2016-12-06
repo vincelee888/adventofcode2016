@@ -19,4 +19,12 @@ describe('Get sum of valid site ids', () => {
   it('- part id can have multiple occurrences', () => {
     expect(sumValidSiteIds('aa-123[a]')).toEqual(123)
   })
+
+  it('- part id count denotes position in checksum', () => {
+    expect(sumValidSiteIds('b-aa-123[ab]')).toEqual(123)
+  })
+
+  it('- part with same priority are ordered alphabetically', () => {
+    expect(sumValidSiteIds('c-b-aa-123[abc]')).toEqual(123)
+  })
 })
