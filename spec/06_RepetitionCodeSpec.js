@@ -1,7 +1,7 @@
 /*
   global describe,  it, expect
 */
-import { getCode } from '../src/06_RepetitionCode/app'
+import { getCode, getRealCode } from '../src/06_RepetitionCode/app'
 import { input as part1 } from './inputs/06'
 
 describe('Get repetition code', () => {
@@ -46,5 +46,31 @@ enarar`
 
   it('- Should solve part 1', () => {
     expect(getCode(part1)).toEqual('ursvoerv')
+  })
+})
+
+describe('Get real code', () => {
+  it('- Should solve example', () => {
+    const input = `eedadn
+drvtee
+eandsr
+raavrd
+atevrs
+tsrnev
+sdttsa
+rasrtv
+nssdts
+ntnada
+svetve
+tesnvt
+vntsnd
+vrdear
+dvrsen
+enarar`
+    expect(getRealCode(input)).toEqual('advent')
+  })
+
+  it('- Should solve part 2', () => {
+    expect(getRealCode(part1)).toEqual('vomaypnn')
   })
 })

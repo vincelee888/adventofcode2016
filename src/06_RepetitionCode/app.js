@@ -21,21 +21,32 @@ const getMostOccurringCharacter = (counts) => {
   })[0]
 }
 
-const getMostOccurringCharacterInColumn = (rows, column) => {
-  const charsInColumn = getCharsInColumn(rows, column)
-  const counts = getCounts(charsInColumn)
-  return getMostOccurringCharacter(counts)
+const getLeastOccurringCharacter = (counts) => {
+  const chars = Object.keys(counts)
+  return chars.sort((a, b) => {
+    return counts[b] - counts[a]
+  })[chars.length - 1]
 }
 
-const getCode = (input) => {
+const getCharacterInColumn = (rows, column, sortingFunction = getMostOccurringCharacter) => {
+  const charsInColumn = getCharsInColumn(rows, column)
+  const counts = getCounts(charsInColumn)
+  return sortingFunction(counts)
+}
+
+const getCode = (input, getCharFunction = getMostOccurringCharacter) => {
   const rows = input.split('\n')
   let result = ''
   const totalLetters = rows[0].trim().length
   for (let column = 0; column < totalLetters; column++) {
-    result += getMostOccurringCharacterInColumn(rows, column)
+    result += getCharacterInColumn(rows, column, getCharFunction)
   }
 
   return result
 }
 
-module.exports = { getCode }
+const getRealCode = (input) => {
+  return getCode(input, getLeastOccurringCharacter)
+}
+
+module.exports = { getCode, getRealCode }
