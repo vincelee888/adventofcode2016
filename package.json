@@ -28,6 +28,7 @@
     "gulp-standard": "6.0.5",
     "gulp-util": "3.0.7",
     "jasmine": "2.4.1",
+    "md5": "^2.2.1",
     "path": "0.12.7",
     "require-dir": "0.3.0",
     "run-sequence": "1.1.5",

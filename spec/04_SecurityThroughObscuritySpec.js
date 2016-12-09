@@ -88,7 +88,6 @@ describe('Decrypt', () => {
 
   it('- can solve part 2', () => {
     const rooms = decrypt(input)
-    let target = rooms.filter((room) => room.name.includes('pole'))
-    console.log(target[0].sectorId)
+    rooms.filter((room) => room.name.includes('pole'))[0]
   })
 })
