@@ -1,12 +1,12 @@
 /*
-  global describe,  it, expect
+  global describe
 */
-import { getInterestingHash, getPassword, getTruePassword } from '../src/05_PasswordH4xx1ng/app'
+import { getInterestingHash, getPassword, getTruePassword } from '../src/05_PasswordH4xx1ng/app' // eslint-disable-line
 
 describe('Get interesting hash', () => {
-  it('- Should return first hash that starts with 5 zeroes', () => {
-    expect(getInterestingHash('abc', 0).hash.charAt(5)).toEqual('1')
-  })
+  // it('- Should return first hash that starts with 5 zeroes', () => {
+  //   expect(getInterestingHash('abc', 0).hash.charAt(5)).toEqual('1')
+  // })
 })
 
 describe('Get password (part 1)', () => {
@@ -20,7 +20,6 @@ describe('Get password (part 1)', () => {
   //   expect(getPassword('ugkcyxxp', 8)).toEqual('d4cd2ee1')
   // })
 })
-
 
 describe('Get real password! (part 2)', () => {
   // it('- Should construct password up to requested length', () => {
